@@ -1,3 +1,12 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fonte institucional */
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
