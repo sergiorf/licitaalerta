@@ -1,61 +1,23 @@
-# ==========================
-# Sistema e IDEs
-# ==========================
+node_modules
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# OS
 .DS_Store
 Thumbs.db
-*.log
-*.tmp
-*.swp
-*.swo
-.vscode/
-.idea/
-*.bak
 
-# ==========================
-# Arquivos de ambiente
-# ==========================
+# Env
 .env
 .env.*
 !.env.example
+!.env.test
 
-# ==========================
-# Frontend (ui/) - Node.js + Vite + Tailwind + Svelte/React
-# ==========================
-ui/node_modules/
-ui/dist/
-ui/.vite/
-ui/.svelte-kit/
-ui/.next/
-ui/.turbo/
-ui/.parcel-cache/
-ui/coverage/
-ui/.cache/
-ui/yarn.lock
-ui/package-lock.json
-ui/pnpm-lock.yaml
-
-# ==========================
-# Backend (backend/) - Rust
-# ==========================
-backend/target/
-backend/Cargo.lock # opcional — ignore se for gerar dinamicamente
-
-# ==========================
-# Docker / Dev Containers
-# ==========================
-.docker/
-.devcontainer/
-**/data/
-**/volumes/
-
-# ==========================
-# Cache e temporários
-# ==========================
-**/__pycache__/
-**/.mypy_cache/
-**/.pytest_cache/
-**/build/
-**/tmp/
-**/.turbo/
-**/.cache/
-**/*.tsbuildinfo
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
