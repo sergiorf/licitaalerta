@@ -1,5 +1,6 @@
 <script>
   import "../app.css";
+  import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <header class="bg-white shadow-md py-4 px-6">
@@ -20,3 +21,5 @@
 <main class="max-w-6xl mx-auto p-6">
   <slot />
 </main>
+
+<Footer />
