@@ -1,32 +1,27 @@
-<!-- src/lib/AlertaList.svelte -->
 <script>
   import { onMount } from 'svelte';
-  let alerts = [];
 
-  function loadAlerts() {
-    alerts = JSON.parse(localStorage.getItem('alerts') || '[]');
-  }
+  let alertas = [];
 
-  function removeAlert(index) {
-    alerts.splice(index, 1);
-    localStorage.setItem('alerts', JSON.stringify(alerts));
-  }
-
-  onMount(loadAlerts);
+  onMount(() => {
+    const alertasSalvos = JSON.parse(localStorage.getItem('alertas') || '[]');
+    alertas = Array.isArray(alertasSalvos) ? alertasSalvos : [];
+  });
 </script>
 
-<div class="bg-white p-4 rounded shadow mb-4">
-  <h2 class="text-lg font-semibold mb-2">Meus Alertas</h2>
-  {#if alerts.length === 0}
-    <p class="text-gray-500">Nenhum alerta salvo.</p>
+<div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 max-w-3xl mx-auto mt-8">
+  <h2 class="text-xl font-bold mb-4 text-blue-800">Meus Alertas</h2>
+  
+  {#if alertas.length === 0}
+    <p class="text-gray-600">Nenhum alerta salvo.</p>
   {:else}
-    <ul class="space-y-2">
-      {#each alerts as alert, i}
-        <li class="flex justify-between bg-gray-50 p-2 rounded">
-          <span class="text-sm">
-            Palavra-chave: <strong>{alert.keyword}</strong> — UF: <strong>{alert.uf}</strong> — Valor: R$ <strong>{alert.minValue}</strong>
-          </span>
-          <button class="text-red-500 text-sm" on:click={() => removeAlert(i)}>Excluir</button>
+    <ul class="space-y-4">
+      {#each alertas as alerta}
+        <li class="border border-gray-300 p-4 rounded-lg shadow-sm">
+          <p><strong>Palavra-chave:</strong> {alerta.keyword || '—'}</p>
+          <p><strong>UF:</strong> {alerta.uf || 'Todos'}</p>
+          <p><strong>Valor:</strong> R$ {alerta.valorMin || '0'} — R$ {alerta.valorMax || '∞'}</p>
+          <p><strong>Tipo de Produto / Serviço:</strong> {alerta.tipo || 'Qualquer'}</p>
         </li>
       {/each}
     </ul>
